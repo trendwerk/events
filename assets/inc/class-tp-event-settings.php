@@ -16,10 +16,11 @@ class TP_Event_Settings {
 	}
 
 	function enqueue() {
-		wp_enqueue_script( 'bootstrap-datepicker', plugins_url( '../coffee/lib/bootstrap-datepicker/bootstrap-datepicker-built.js', __FILE__ ), array( 'jquery' ) );
-		wp_enqueue_style( 'bootstrap-datepicker', plugins_url( '../coffee/lib/require.css', __FILE__ ) );
+		wp_enqueue_script( 'bootstrap-datepicker', plugins_url( '../coffee/lib/bootstrap-datepicker/bootstrap-datepicker.min.js', __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'bootstrap-datepicker-nl', plugins_url( '../coffee/lib/bootstrap-datepicker/bootstrap-datepicker.nl.min.js', __FILE__ ), array( 'jquery', 'bootstrap-datepicker' ) );
+		wp_enqueue_style( 'bootstrap-datepicker', plugins_url( '../coffee/lib/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css', __FILE__ ) );
 
-		wp_enqueue_script( 'events', plugins_url( '../coffee/admin.js', __FILE__ ), array( 'jquery', 'bootstrap-datepicker' ) );
+		wp_enqueue_script( 'events', plugins_url( '../coffee/admin.js', __FILE__ ), array( 'jquery', 'bootstrap-datepicker', 'bootstrap-datepicker-nl' ) );
 	}
 	
 	function register() {

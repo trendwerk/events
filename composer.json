@@ -9,41 +9,8 @@
 			"email": "harold@trendwerk.nl"
 		}
 	],
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"name": "eternicode/bootstrap-datepicker",
-				"type": "component",
-				"version": "1.4.0",
-				"source": {
-					"url": "https://github.com/eternicode/bootstrap-datepicker.git",
-					"type": "git",
-					"reference": "1.4"
-				},
-				"extra": {
-					"component": {
-						"scripts": [
-							"dist/js/bootstrap-datepicker.min.js",
-							"dist/locales/bootstrap-datepicker.nl.min.js"
-						],
-						"styles": [
-							"dist/css/bootstrap-datepicker3.standalone.min.css"
-						]
-					}
-				},
-				"require": {
-					"robloach/component-installer": "*"
-				}
-			}
-		}
-	],
 	"require": {
 		"php": ">=5.4",
-		"composer/installers": "v1.0.19",
-		"eternicode/bootstrap-datepicker": "1.4.0"
-    },
-    "config": {
-		"component-dir": "assets/coffee/lib"
-	}
+		"composer/installers": "v1.0.19"
+    }
 }
