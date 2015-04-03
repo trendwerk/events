@@ -24,6 +24,8 @@ class TP_Events {
 
 		add_filter( 'views_edit-' . $this->post_type, array( $this, 'views' ) );
 		add_filter( 'post_date_column_time', array( $this, 'event_time' ), 10, 3 );
+
+		add_filter( 'events_archive_slug', array( $this, 'archive_slug' ) );
 	}
 
 	/**
@@ -55,7 +57,7 @@ class TP_Events {
 			'rewrite'           => array(
 				'slug'          => __( 'events', 'events' ),
 			),
-			'supports'          => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+			'supports'          => array( 'title', 'editor', 'revisions' ),
 		) );
 
 		register_post_type( $this->post_type, $args );
@@ -65,7 +67,7 @@ class TP_Events {
 		 */
 		global $wp_rewrite;
 
-		$archive_slug = apply_filters( 'events_archive_slug', __( 'archive', 'events' ) );
+		$archive_slug = apply_filters( 'events_archive_slug', '' );
 
 		add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/?$', 'index.php?post_type=' . $this->post_type . '&events_archive=true', 'top' );
 		add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/' . $wp_rewrite->pagination_base . '/([0-9]+)/?$', 'index.php?post_type=' . $this->post_type . '&paged=$matches[1]&events_archive=true', 'top' );
@@ -184,10 +186,6 @@ class TP_Events {
 	/**
 	 * Event time
 	 */
-	
-	/**
-	 * Show planned time
-	 */
 	function event_time( $time, $post, $column ) {
 		if( $column != 'date' )
 			return $time;
@@ -196,6 +194,13 @@ class TP_Events {
 			return $time;
 
 		return date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), get_post_meta( $post->ID, '_start', true ) );
+	}
+
+	/**
+	 * Events archive slug
+	 */
+	function archive_slug() {
+		return __( 'archive', 'events' );
 	}
 
 } new TP_Events;
