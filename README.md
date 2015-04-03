@@ -20,12 +20,12 @@ Or manually add it to your `composer.json`:
 
 ## Templates
 
-This plugin does not provide any templates. This works just like any other post type:
+This plugin does not provide any templates. They have to be created in your theme. This works just like any other post type:
 
 - `archive-events.php`
 - `single-events.php`
 
-### Post meta
+#### Meta
 
 There is some additional post meta available for use in your templates:
 
@@ -41,23 +41,23 @@ There is some additional post meta available for use in your templates:
 
 There's an endpoint available which contains past events. Default: `events/archive`.
 
-### Post type archive
+#### Post type archive
 Use [`get_post_type_archive_link`](https://developer.wordpress.org/reference/functions/get_post_type_archive_link/), like with any other post type.
 
-### Retrieve archive slug
+#### Retrieve archive slug
 ```
 apply_filters( 'events_archive_slug', '' );
 ```
 
 ## Hooks
 
-### Post type
+#### Post type
 ```
 apply_filters( 'events_post_type', $args );
 ```
 `$args` contains all post type settings.
 
-### Archive slug
+#### Archive slug
 ```
 apply_filters( 'events_archive_slug', '' );
 ```
