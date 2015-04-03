@@ -37,14 +37,14 @@ There is some additional post meta available for use in your templates:
 - `_city`
 - `_cost`
 
-## Event archive
+## Past events
 
 There's an endpoint available which contains past events. Default: `events/archive`.
 
 #### Post type archive
 Use [`get_post_type_archive_link`](https://developer.wordpress.org/reference/functions/get_post_type_archive_link/), like with any other post type.
 
-#### Retrieve archive slug
+#### Get events archive slug
 ```
 apply_filters( 'events_archive_slug', '' );
 ```
