@@ -45,19 +45,19 @@ There's an endpoint available which contains past events. Default: `events/archi
 Use [`get_post_type_archive_link`](https://developer.wordpress.org/reference/functions/get_post_type_archive_link/), like with any other post type.
 
 #### Get events archive slug
-```
+```php
 apply_filters( 'events_archive_slug', '' );
 ```
 
 ## Hooks
 
 #### Post type
-```
+```php
 apply_filters( 'events_post_type', $args );
 ```
 `$args` contains all post type settings.
 
 #### Archive slug
-```
+```php
 apply_filters( 'events_archive_slug', '' );
 ```
