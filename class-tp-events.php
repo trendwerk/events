@@ -66,7 +66,7 @@ class TP_Events {
 		 * Archive
 		 */
 		
-		if( $args->public ) {
+		if( $args['public'] ) {
 			global $wp_rewrite;
 
 			$archive_slug = apply_filters( 'events_archive_slug', '' );
