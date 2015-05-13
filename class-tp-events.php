@@ -8,7 +8,7 @@
  * Author: Trendwerk
  * Author URI: https://github.com/trendwerk
  * 
- * Version: 1.0.2
+ * Version: 1.0.3
  */
 
 include_once( 'assets/inc/class-tp-event-settings.php' );
@@ -65,12 +65,17 @@ class TP_Events {
 		/**
 		 * Archive
 		 */
-		global $wp_rewrite;
+		
+		if( $args->public ) {
+			global $wp_rewrite;
 
-		$archive_slug = apply_filters( 'events_archive_slug', '' );
+			$archive_slug = apply_filters( 'events_archive_slug', '' );
 
-		add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/?$', 'index.php?post_type=' . $this->post_type . '&events_archive=true', 'top' );
-		add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/' . $wp_rewrite->pagination_base . '/([0-9]+)/?$', 'index.php?post_type=' . $this->post_type . '&paged=$matches[1]&events_archive=true', 'top' );
+			if( 0 < strlen( $archive_slug ) ) {
+				add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/?$', 'index.php?post_type=' . $this->post_type . '&events_archive=true', 'top' );
+				add_rewrite_rule( '^' . $args['rewrite']['slug'] . '/' . $archive_slug . '/' . $wp_rewrite->pagination_base . '/([0-9]+)/?$', 'index.php?post_type=' . $this->post_type . '&paged=$matches[1]&events_archive=true', 'top' );
+			}
+		}
 	}
 
 	/**
